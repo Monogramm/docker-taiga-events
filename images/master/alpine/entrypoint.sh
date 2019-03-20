@@ -17,7 +17,7 @@ if [ -n "$RABBIT_HOST" ]; then
 fi
 
 if [ -n "$TAIGA_EVENTS_SECRET" ]; then
-  echo "Updating Taiga Events secret: $TAIGA_EVENTS_SECRET"
+  echo "Updating Taiga Events secret: (don't expect to find those in the logs...)"
   sed -i \
     -e "s|\"secret\": \".*\",|\"secret\": \"$TAIGA_EVENTS_SECRET\",|g" \
     /taiga/config.json
@@ -30,5 +30,5 @@ if [ -n "$TAIGA_EVENTS_PORT" ]; then
     /taiga/config.json
 fi
 
-# Start nginx server
+# Start coffee script
 exec "$@"
