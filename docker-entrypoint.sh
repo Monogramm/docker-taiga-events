@@ -12,7 +12,7 @@ fi
 if [ -n "$RABBIT_HOST" ]; then
   echo "Updating Taiga RabbitMQ URL: $RABBIT_HOST"
   sed -i \
-    -e "s|\"url\": \".*\",|\"url\": \"${RABBIT_USER}:${RABBIT_PASSWORD}@${RABBIT_HOST}:${RABBIT_PORT}\",|g" \
+    -e "s|\"url\": \".*\",|\"url\": \"amqp://${RABBIT_USER}:${RABBIT_PASSWORD}@${RABBIT_HOST}:${RABBIT_PORT}\",|g" \
     /taiga/config.json
 fi
 
