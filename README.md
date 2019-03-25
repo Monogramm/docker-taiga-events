@@ -65,7 +65,7 @@ See [config.example.json](https://github.com/taigaio/taiga-events/blob/master/co
 ### RABBIT
 
 *Default values*:
-```
+```yml
 RABBIT_USER=guest
 RABBIT_PASSWORD=guest
 RABBIT_HOST=rabbitmq
@@ -75,7 +75,7 @@ RABBIT_PORT=5672
 Configures RabbitMQ. Requires RabbitMQ.
 
 Examples:
-```
+```yml
 RABBIT_USER=taiga
 RABBIT_PASSWORD=somethingverysecure
 RABBIT_HOST=taiga_rabbitmq
@@ -84,13 +84,13 @@ RABBIT_PORT=5672
 
 ### TAIGA_EVENTS_SECRET
 
-*Default value*: `mysupersecret`
+*Default value*: `!!!REPLACE-ME-j1598u1J^U*(y251u98u51u5981urf98u2o5uvoiiuzhlit3)!!!`
 
 Taiga Events secret key. Remember to set it in the backend too (same value as `TAIGA_SECRET_KEY`).
 
 Examples:
-```
-TAIGA_EVENTS_SECRET=False
+```yml
+TAIGA_EVENTS_SECRET=somethingreallysecureandrandom
 ```
 
 ### TAIGA_EVENTS_PORT
@@ -100,7 +100,7 @@ TAIGA_EVENTS_SECRET=False
 Taiga Events default port. Remember to set it in the front client too.
 
 Examples:
-```
+```yml
 TAIGA_EVENTS_PORT=8443
 TAIGA_EVENTS_PORT=18888
 ```
