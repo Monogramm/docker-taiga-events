@@ -8,7 +8,7 @@ ENV TAIGA_VERSION=%%VERSION%% \
     RABBIT_PASSWORD=guest \
     RABBIT_HOST=taigarabbit \
     RABBIT_PORT=5672 \
-    TAIGA_EVENTS_SECRET=mysupersecret \
+    TAIGA_EVENTS_SECRET=!!!REPLACE-ME-j1598u1J^U*(y251u98u51u5981urf98u2o5uvoiiuzhlit3)!!! \
     TAIGA_EVENTS_PORT=8888
 
 COPY entrypoint.sh /
