@@ -70,6 +70,7 @@ RABBIT_USER=guest
 RABBIT_PASSWORD=guest
 RABBIT_HOST=rabbitmq
 RABBIT_PORT=5672
+RABBIT_VHOST=/
 ```
 
 Configures RabbitMQ. Requires RabbitMQ.
@@ -80,6 +81,7 @@ RABBIT_USER=taiga
 RABBIT_PASSWORD=somethingverysecure
 RABBIT_HOST=taiga_rabbitmq
 RABBIT_PORT=5672
+RABBIT_VHOST=/taiga
 ```
 
 ### TAIGA_EVENTS_SECRET

@@ -4,6 +4,7 @@ LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
 
 # Taiga back and events properties
 ENV TAIGA_VERSION=master \
+    RABBIT_VHOST=/ \
     RABBIT_USER=guest \
     RABBIT_PASSWORD=guest \
     RABBIT_HOST=taigarabbit \
