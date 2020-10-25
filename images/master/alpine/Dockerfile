@@ -31,10 +31,10 @@ RUN set -ex; \
     chmod 755 /entrypoint.sh; \
     rm -f /etc/nginx/sites-enabled/default; \
     mkdir -p /tmp/taiga-events; \
-    tar xzf /tmp/taiga-events-${TAIGA_VERSION}.tar.gz -C /tmp/taiga-events; \
-    rm /tmp/taiga-events-${TAIGA_VERSION}.tar.gz; \
+    tar xzf "/tmp/taiga-events-${TAIGA_VERSION}.tar.gz" -C /tmp/taiga-events; \
+    rm "/tmp/taiga-events-${TAIGA_VERSION}.tar.gz"; \
     mkdir -p /usr/src/taiga-events; \
-    cp -r /tmp/taiga-events/taiga-events-${TAIGA_VERSION}/* /usr/src/taiga-events; \
+    cp -r "/tmp/taiga-events/taiga-events-${TAIGA_VERSION}"/* /usr/src/taiga-events; \
     rm -rf /tmp/taiga-events; \
     ln -s /taiga/config.json /usr/src/taiga-events/config.json; \
     npm install --production; \

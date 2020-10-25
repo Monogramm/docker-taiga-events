@@ -44,7 +44,7 @@ for latest in "${latests[@]}"; do
             echo "generating $latest [$version] $variant"
             mkdir -p "$dir"
 
-            template="Dockerfile-${base[$variant]}.template"
+            template="Dockerfile.template"
             cp "$template" "$dir/Dockerfile"
 
             # Replace the variables.
