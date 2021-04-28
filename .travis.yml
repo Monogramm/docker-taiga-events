@@ -28,4 +28,5 @@ notifications:
   email: false
 
 env: # Environments
-    - VERSION=master VARIANT=alpine
+    - VERSION=legacy VARIANT=alpine
+    - VERSION=6.0 VARIANT=alpine
