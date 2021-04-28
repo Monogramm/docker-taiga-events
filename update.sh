@@ -16,7 +16,7 @@ variants=(
 )
 
 min_version='6.0'
-dockerLatest='6.0'
+dockerLatest='master'
 dockerDefaultVariant='alpine'
 
 # version_greater_or_equal A B returns whether A >= B
@@ -99,9 +99,9 @@ for latest in "${latests[@]}"; do
                 fi
             elif [ "$latest" = "legacy" ]; then
                 if [ "$tagVariant" = "$dockerDefaultVariant" ]; then
-                    export DOCKER_TAGS="$latest-$tagVariant 4.0-$tagVariant 5.0-$tagVariant 5.5-$tagVariant $latest 4.0 5.0 5.5 "
+                    export DOCKER_TAGS="$latest-$tagVariant 4.2-$tagVariant 5.0-$tagVariant 5.5-$tagVariant $latest 4.2 5.0 5.5 "
                 else
-                    export DOCKER_TAGS="$latest-$tagVariant 4.0-$tagVariant 5.0-$tagVariant 5.5-$tagVariant "
+                    export DOCKER_TAGS="$latest-$tagVariant 4.2-$tagVariant 5.0-$tagVariant 5.5-$tagVariant "
                 fi
             elif [ "$version" = "$latest" ]; then
                 if [ "$tagVariant" = "$dockerDefaultVariant" ]; then
