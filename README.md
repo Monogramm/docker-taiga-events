@@ -1,5 +1,5 @@
 [![License: AGPL v3][uri_license_image]][uri_license]
-[![Build Status](https://travis-ci.org/Monogramm/docker-taiga-events.svg)](https://travis-ci.org/Monogramm/docker-taiga-events)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Monogramm/docker-taiga-events/Docker%20Image%20CI)](https://github.com/Monogramm/docker-taiga-events/actions)
 [![Docker Automated buid](https://img.shields.io/docker/cloud/build/monogramm/docker-taiga-events.svg)](https://hub.docker.com/r/monogramm/docker-taiga-events/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/monogramm/docker-taiga-events.svg)](https://hub.docker.com/r/monogramm/docker-taiga-events/)
 [![](https://images.microbadger.com/badges/version/monogramm/docker-taiga-events.svg)](https://microbadger.com/images/monogramm/docker-taiga-events)
@@ -11,11 +11,22 @@ This Docker repository provides the [taiga-events](https://github.com/taigaio/ta
 
 This image was inspired by [benhutchins/docker-taiga-events](https://github.com/benhutchins/docker-taiga-events).
 
-## What is Taiga
+## What is **Taiga**
 
 Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable.
 
 > [taiga.io](https://taiga.io)
+
+## Supported tags
+
+[Dockerhub monogramm/docker-taiga-events](https://hub.docker.com/r/monogramm/docker-taiga-events/)
+
+<!-- >Docker Tags -->
+
+-   6.0.2-alpine 6.0-alpine 6.0.2 6.0  (`images/6.0/alpine/Dockerfile`)
+-   legacy-alpine 4.2-alpine 5.0-alpine 5.5-alpine legacy 4.2 5.0 5.5  (`images/legacy/alpine/Dockerfile`)
+
+<!-- <Docker Tags -->
 
 ## Build Docker image
 
