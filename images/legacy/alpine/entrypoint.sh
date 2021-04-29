@@ -9,13 +9,13 @@ fi
 ## Taiga Events config (legacy & 6.0+)
 #########################################
 
-if [ -n "${RABBIT_HOST}" ]; then
-  echo "Updating Taiga RabbitMQ URL: ${RABBIT_HOST}"
+if [ -n "${RABBIT_HOST:-$RABBITMQ_HOST}" ]; then
+  echo "Updating Taiga RabbitMQ URL: ${RABBIT_HOST:-$RABBITMQ_HOST}"
   sed -i \
-    -e "s|\"url\": \".*\",|\"url\": \"amqp://${RABBIT_USER}:${RABBIT_PASSWORD}@${RABBIT_HOST}:${RABBIT_PORT}/${RABBIT_VHOST}\",|g" \
+    -e "s|\"url\": \".*\",|\"url\": \"amqp://${RABBIT_USER:-$RABBITMQ_USER}:${RABBIT_PASSWORD:-$RABBITMQ_PASSWORD}@${RABBIT_HOST:-$RABBITMQ_HOST}:${RABBIT_PORT:-$RABBITMQ_PORT}${RABBIT_VHOST:-$RABBITMQ_VHOST}\",|g" \
     /taiga/config.json
 
-  export RABBITMQ_URL=amqp://${RABBIT_USER}:${RABBIT_PASSWORD}@${RABBIT_HOST}:${RABBIT_PORT}/${RABBIT_VHOST}
+  export RABBITMQ_URL=amqp://${RABBIT_USER:-$RABBITMQ_USER}:${RABBIT_PASSWORD:-$RABBITMQ_PASSWORD}@${RABBIT_HOST:-$RABBITMQ_HOST}:${RABBIT_PORT:-$RABBITMQ_PORT}${RABBIT_VHOST:-$RABBITMQ_VHOST}
 fi
 
 if [ -n "${TAIGA_EVENTS_SECRET}" ]; then

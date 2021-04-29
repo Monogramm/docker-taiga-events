@@ -2,11 +2,11 @@ FROM node:alpine
 
 # Taiga back and events properties
 ENV TAIGA_VERSION=6.0.2 \
-    RABBIT_VHOST=/ \
-    RABBIT_USER=guest \
-    RABBIT_PASSWORD=guest \
-    RABBIT_HOST=taigarabbit \
-    RABBIT_PORT=5672 \
+    RABBITMQ_VHOST=/taiga \
+    RABBITMQ_USER=guest \
+    RABBITMQ_PASSWORD=guest \
+    RABBITMQ_HOST= \
+    RABBITMQ_PORT=5672 \
     SECRET=!!!REPLACE-ME-j1598u1J^U*(y251u98u51u5981urf98u2o5uvoiiuzhlit3)!!! \
     WEB_SOCKET_SERVER_PORT=8888 \
     APP_PORT=3023
