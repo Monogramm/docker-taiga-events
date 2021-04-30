@@ -30,7 +30,7 @@ services:
     environment:
       - RABBIT_USER=${TAIGA_RABBIT_USER}
       - RABBIT_PASSWORD=${TAIGA_RABBIT_PASSWORD}
-      - RABBIT_VHOST='/'
+      - RABBIT_VHOST=/taiga
       - RABBIT_HOST=taiga_rabbit
       - RABBIT_PORT=5672
       - TAIGA_EVENTS_SECRET=${TAIGA_SECRET}
@@ -54,6 +54,7 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=${TAIGA_RABBIT_USER}
       - RABBITMQ_DEFAULT_PASS=${TAIGA_RABBIT_PASSWORD}
+      - RABBITMQ_DEFAULT_VHOST=taiga
 
   # Test services (do not use in production)
 
