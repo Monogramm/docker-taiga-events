@@ -4,7 +4,7 @@ FROM node:alpine
 ENV TAIGA_VERSION=77a775eddaadd77cb9bddb57eba81928868d895f \
     RABBITMQ_VHOST=/taiga \
     RABBITMQ_USER=guest \
-    RABBITMQ_PASSWORD=guest \
+    RABBITMQ_PASS=guest \
     RABBITMQ_HOST= \
     RABBITMQ_PORT=5672 \
     SECRET=!!!REPLACE-ME-j1598u1J^U*(y251u98u51u5981urf98u2o5uvoiiuzhlit3)!!! \

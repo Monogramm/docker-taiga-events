@@ -16,19 +16,22 @@ fi
 if [ -n "${RABBIT_HOST:-$RABBITMQ_HOST}" ]; then
   log "Updating Taiga RabbitMQ URL (legacy): ${RABBIT_HOST:-$RABBITMQ_HOST}"
   sed -i \
-    -e "s|\"url\": \".*\",|\"url\": \"amqp://${RABBIT_USER:-$RABBITMQ_USER}:${RABBIT_PASSWORD:-$RABBITMQ_PASSWORD}@${RABBIT_HOST:-$RABBITMQ_HOST}:${RABBIT_PORT:-$RABBITMQ_PORT}${RABBIT_VHOST:-$RABBITMQ_VHOST}\",|g" \
+    -e "s|\"url\": \".*\",|\"url\": \"amqp://${RABBIT_USER:-$RABBITMQ_USER}:${RABBIT_PASSWORD:-$RABBITMQ_PASS}@${RABBIT_HOST:-$RABBITMQ_HOST}:${RABBIT_PORT:-$RABBITMQ_PORT}${RABBIT_VHOST:-$RABBITMQ_VHOST}\",|g" \
     /taiga/config.json
-
-  export RABBITMQ_URL=amqp://${RABBIT_USER:-$RABBITMQ_USER}:${RABBIT_PASSWORD:-$RABBITMQ_PASSWORD}@${RABBIT_HOST:-$RABBITMQ_HOST}:${RABBIT_PORT:-$RABBITMQ_PORT}${RABBIT_VHOST:-$RABBITMQ_VHOST}
 fi
 
-if [ -n "${TAIGA_EVENTS_SECRET}" ]; then
+if [ -z "${RABBITMQ_URL}" ]; then
+  log "Exporting Taiga RabbitMQ URL: ${RABBIT_HOST:-$RABBITMQ_HOST}"
+  export RABBITMQ_URL=amqp://${RABBIT_USER:-$RABBITMQ_USER}:${RABBIT_PASSWORD:-$RABBITMQ_PASS}@${RABBIT_HOST:-$RABBITMQ_HOST}:${RABBIT_PORT:-$RABBITMQ_PORT}${RABBIT_VHOST:-$RABBITMQ_VHOST}
+fi
+
+if [ -n "${SECRET:-$TAIGA_EVENTS_SECRET}" ]; then
   log "Updating Taiga Events secret (legacy): (don't expect to find those in the logs...)"
   sed -i \
-    -e "s|\"secret\": \".*\",|\"secret\": \"${TAIGA_EVENTS_SECRET}\",|g" \
+    -e "s|\"secret\": \".*\",|\"secret\": \"${SECRET:-$TAIGA_EVENTS_SECRET}\",|g" \
     /taiga/config.json
 
-  export SECRET=${TAIGA_EVENTS_SECRET}
+  export SECRET=${SECRET:-$TAIGA_EVENTS_SECRET}
 fi
 
 if [ -n "${TAIGA_EVENTS_PORT}" ]; then
