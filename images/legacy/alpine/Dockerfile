@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:16.8.0-alpine3.13
 
 # Taiga back and events properties
 ENV TAIGA_VERSION=77a775eddaadd77cb9bddb57eba81928868d895f \
