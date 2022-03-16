@@ -1,7 +1,7 @@
 FROM node:alpine
 
 # Taiga back and events properties
-ENV TAIGA_VERSION=6.0.2 \
+ENV TAIGA_VERSION=6.4.0 \
     RABBITMQ_VHOST=/taiga \
     RABBITMQ_USER=guest \
     RABBITMQ_PASS=guest \
@@ -46,7 +46,7 @@ CMD ["npm", "run", "start:production"]
 # Arguments to label built container
 ARG VCS_REF=unknown
 ARG BUILD_DATE=unknown
-ARG VERSION=6.0.2
+ARG VERSION=6.4.0
 
 # Container labels (http://label-schema.org/)
 # Container annotations (https://github.com/opencontainers/image-spec)

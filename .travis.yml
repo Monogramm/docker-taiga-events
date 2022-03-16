@@ -30,3 +30,8 @@ notifications:
 env: # Environments
     - VERSION=legacy VARIANT=alpine
     - VERSION=6.0 VARIANT=alpine
+    - VERSION=6.1 VARIANT=alpine
+    - VERSION=6.2 VARIANT=alpine
+    - VERSION=6.3 VARIANT=alpine
+    - VERSION=6.4 VARIANT=alpine
+    - VERSION=6.5 VARIANT=alpine

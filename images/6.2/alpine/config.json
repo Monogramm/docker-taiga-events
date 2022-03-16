@@ -1,0 +1,7 @@
+{
+    "url": "amqp://guest:guest@taigarabbit:5672",
+    "secret": "mysecret",
+    "webSocketServer": {
+        "port": 8888
+    }
+}

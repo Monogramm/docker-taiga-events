@@ -17,7 +17,7 @@ COPY config.json /taiga/
 WORKDIR /usr/src/taiga-events
 
 # Get Taiga-Events
-ADD https://github.com/taigaio/taiga-events/archive/${TAIGA_VERSION}.tar.gz /tmp/taiga-events-${TAIGA_VERSION}.tar.gz
+ADD https://github.com/kaleidos-ventures/taiga-events/archive/${TAIGA_VERSION}.tar.gz /tmp/taiga-events-${TAIGA_VERSION}.tar.gz
 
 # Install the packages we need
 # Install Taiga from tag archive

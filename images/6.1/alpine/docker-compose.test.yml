@@ -1,0 +1,81 @@
+version: '2.3'
+
+volumes:
+  redis_data:
+
+networks:
+  external_network:
+  internal_network:
+    internal: true
+
+services:
+  # To disable taiga-events, comment all the following lines:
+  taiga_events:
+    build:
+      context: .
+      dockerfile: ${DOCKERFILE_PATH}
+    image: ${IMAGE_NAME}
+    container_name: taiga_events
+    #restart: always
+    depends_on:
+      taiga_rabbit:
+        condition: service_healthy
+    links:
+      - taiga_rabbit
+    ports:
+      - "8888:8888"
+    networks:
+      - external_network
+      - internal_network
+    environment:
+      - RABBIT_USER=${TAIGA_RABBIT_USER}
+      - RABBIT_PASSWORD=${TAIGA_RABBIT_PASSWORD}
+      - RABBIT_VHOST=/taiga
+      - RABBIT_HOST=taiga_rabbit
+      - RABBIT_PORT=5672
+      - TAIGA_EVENTS_SECRET=${TAIGA_SECRET}
+      - TAIGA_EVENTS_PORT=8888
+
+  taiga_rabbit:
+    image: rabbitmq:3-alpine
+    hostname: taiga_rabbit
+    container_name: taiga_rabbit
+    #restart: always
+    expose:
+      - '5672'
+    #ports:
+    #  - "5672:5672"
+    networks:
+      - internal_network
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "5672" ]
+      timeout: 5s
+      retries: 1
+    environment:
+      - RABBITMQ_DEFAULT_USER=${TAIGA_RABBIT_USER}
+      - RABBITMQ_DEFAULT_PASS=${TAIGA_RABBIT_PASSWORD}
+      - RABBITMQ_DEFAULT_VHOST=taiga
+
+  # Test services (do not use in production)
+
+  # https://docs.docker.com/docker-hub/builds/automated-testing/
+  sut:
+    build:
+      context: ./test
+      dockerfile: Dockerfile
+    command: sh /docker_test.sh
+    networks:
+      - external_network
+      - internal_network
+    depends_on:
+      taiga_events:
+        condition: service_started
+    environment:
+      - DOCKER_TEST_CONTAINER=taiga_events
+      - DOCKER_WEB_CONTAINER=
+    volumes_from:
+      - taiga_events
+    # If you want, you can sync time & timezone with host
+    #volumes:
+    #  - /etc/localtime:/etc/localtime:ro
+    #  - /etc/timezone:/etc/timezone:ro
